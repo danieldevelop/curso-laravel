@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CursoController; // en la v7 esta linea no es necesaria, desde la v9 es necesaria
+use App\Http\Controllers\HomeController; // en la v7 esta linea no es necesaria, desde la v9 es necesaria
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,23 +18,18 @@ use Illuminate\Support\Facades\Route;
 //! El orden de las rutas es importante, ya que si se coloca la ruta de la página 
 //! principal al final, no se podrá acceder a las demás rutas.
 
-Route::get('/', function () {
-    // return view('welcome');
-    return 'Bienvenido a la página principal';
-});
+Route::get('/', HomeController::class);
+// antiaguamente se usaba: v7
+// Route::get('/', 'HomeController');
 
-Route::get('cursos', function() {
-    return "Bienvenido al listado de cursos";
-});
+Route::get('cursos', [CursoController::class, 'index']);
+// antiaguamente se usaba: v7
+// Route::get('cursos', 'CursoController@index');
 
-Route::get("cursos/create-curso", function() {
-    return "En esta página podras crear un curso";
-});
+Route::get("cursos/create-curso", [CursoController::class, 'create']);
+// antiguamente se usaba: v7
+// Route::get("cursos/create-curso", 'CursoController@create');
 
-Route::get("cursos/{curso}/{categoria?}", function($curso, $categoria = null) {
-    if($categoria) {
-        return "Bienvenido al curso $curso, de la categoria $categoria";
-    } else {
-        return "Bienvenido al curso: $curso";
-    }
-});
+Route::get("cursos/{curso}", [CursoController::class, 'show']);
+// antiguamente se usaba: v7
+// Route::get("cursos/{curso}", 'CursoController@show');

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
+
+    //protected $namespace = 'App\Http\Controllers'; // en la v7 esta linea es necesaria, desde la v9 se quita
+
     /**
      * The path to your application's "home" route.
      *
@@ -34,6 +37,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
+                //->namespace($this->namespace) // en la v7 esta linea es necesaria, desde  la v9 se quita
                 ->group(base_path('routes/web.php'));
         });
     }
