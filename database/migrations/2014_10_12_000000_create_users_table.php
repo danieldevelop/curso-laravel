@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // se crea como Integer Unsigned incrementing
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable(); // verifica el email, si es null no esta verificado
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('avatar'); // imagen de perfil
+            $table->rememberToken(); // crea un token para recordar la sesion, si el usuario quiere mantener la sesion abierta
+            $table->timestamps(); // crea dos campos, created_at y updated_at
         });
     }
 
