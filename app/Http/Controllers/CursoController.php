@@ -14,16 +14,19 @@ class CursoController extends Controller
 
     public function index()
     {
-        return "Bienvenido al listado de cursos";
+        return view('cursos.index');
     }
 
     public function create()
     {
-        return "En esta página podras crear un curso";
+        return view('cursos.create');
     }
 
     public function show($curso)
     {
-        return "Bienvenido al curso: $curso";
+        // compact('curso') es lo mismo que ['curso' => $curso], ya que usamos el mismo nombre de la variable
+        // Si la variable se llama diferente, se debe usar el array asociativo, es decir, ['nombre' => $curso]
+        // y en la vista se debe llamar a la variable como $nombre
+        return view('cursos.show', compact('curso')); 
     }
 }

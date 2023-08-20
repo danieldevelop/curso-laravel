@@ -10,6 +10,6 @@ class HomeController extends Controller
     // como solo manjemos una ruta se llama al método __invoke
     public function __invoke()
     {
-        return "Bienvenido a la pagina principal, desde el controler";
+        return view('home');
     }
 }
