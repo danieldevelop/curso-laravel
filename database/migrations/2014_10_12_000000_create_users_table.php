@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable(); // verifica el email, si es null no esta verificado
             $table->string('password');
-            $table->string('avatar'); // imagen de perfil
             $table->rememberToken(); // crea un token para recordar la sesion, si el usuario quiere mantener la sesion abierta
             $table->timestamps(); // crea dos campos, created_at y updated_at
         });
